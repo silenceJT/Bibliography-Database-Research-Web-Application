@@ -1,0 +1,59 @@
+
+<p id="notice"><%= notice %></p>
+
+<form class="form-inline">
+  <h1>Biblios</h1>
+  <%= link_to 'Add New Biblio', new_biblio_path, class: "btn btn-outline-primary" %>
+</form>
+
+
+<table class="table table-striped table-bordered table-hover">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Author</th>
+      <th>Year</th>
+      <th>Title</th>
+      <!--
+      <th>Publication</th>
+      <th>Publisher</th>
+      <th>Biblio name</th>
+      <th>Language published</th>
+      <th>Language researched</th>
+      <th>Country of research</th>
+      <th>Keywords</th>
+      <th>Isbn</th>
+      <th>Issn</th>
+      <th>Url</th>
+      <th>Date of entry</th> -->
+      <th colspan="3">Functions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @biblios.each do |biblio| %>
+      <tr>
+        <td><%= biblio.author %></td>
+        <td><%= biblio.year %></td>
+        <td><%= biblio.title %></td>
+        <!--
+        <td><%= biblio.publication %></td>
+        <td><%= biblio.publisher %></td>
+        <td><%= biblio.biblio_name %></td>
+        <td><%= biblio.language_published %></td>
+        <td><%= biblio.language_researched %></td>
+        <td><%= biblio.country_of_research %></td>
+        <td><%= biblio.keywords %></td>
+        <td><%= biblio.isbn %></td>
+        <td><%= biblio.issn %></td>
+        <td><%= biblio.url %></td>
+        <td><%= biblio.date_of_entry %></td>
+        -->
+        <td><%= link_to 'Show', biblio, class: "btn btn-outline-success btn-sm" %></td>
+        <td><%= link_to 'Edit', edit_biblio_path(biblio), class: "btn btn-outline-info btn-sm" %></td>
+        <td><%= link_to 'Delete', biblio, method: :delete, data: { confirm: 'Are you sure?' },
+                                            class: "btn btn-outline-danger btn-sm" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

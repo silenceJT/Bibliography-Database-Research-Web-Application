@@ -1,8 +1,14 @@
-@import "bootstrap-sprockets";
 @import "bootstrap";
 
-/* universal */
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
 
+
+/* universal */
+/*
 body {
   padding-top: 60px;
 }
@@ -22,9 +28,11 @@ textarea {
 .center h1 {
   margin-bottom: 10px;
 }
+*/
+
 
 /* typography */
-
+/*
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
 }
@@ -49,25 +57,7 @@ p {
   font-size: 1.1em;
   line-height: 1.7em;
 }
-
-/* header */
-
-#logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
-}
-
-#logo:hover {
-  color: #fff;
-  text-decoration: none;
-}
-
+*/
 
 /* footer */
 
@@ -75,27 +65,31 @@ footer {
   margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
-  color: #777;
-}
-
-footer a {
-  color: #555;
-}
-
-footer a:hover {
-  color: #222;
 }
 
 footer small {
-  float: left;
-}
-
-footer ul {
   float: right;
-  list-style: none;
 }
 
-footer ul li {
+
+/* column */
+.col-4 {
+  border: 1px solid #eaeaea;
+  //background-color: #dfdfdf;
+}
+
+.col {
+  border: 1px solid #eaeaea;
+  //background-color: #e5e5e5;
+}
+
+
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
   float: left;
-  margin-left: 15px;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
 }

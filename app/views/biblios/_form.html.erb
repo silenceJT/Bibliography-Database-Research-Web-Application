@@ -1,0 +1,87 @@
+<%= form_with(model: biblio, local: true) do |form| %>
+  <% if biblio.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(biblio.errors.count, "error") %> prohibited this biblio from being saved:</h2>
+
+      <ul>
+      <% biblio.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :author %>
+    <%= form.text_field :author, id: :biblio_author %>
+  </div>
+
+  <div class="field">
+    <%= form.label :year %>
+    <%= form.text_field :year, id: :biblio_year %>
+  </div>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :biblio_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :publication %>
+    <%= form.text_field :publication, id: :biblio_publication %>
+  </div>
+
+  <div class="field">
+    <%= form.label :publisher %>
+    <%= form.text_field :publisher, id: :biblio_publisher %>
+  </div>
+
+  <div class="field">
+    <%= form.label :biblio_name %>
+    <%= form.text_field :biblio_name, id: :biblio_biblio_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :language_published %>
+    <%= form.text_field :language_published, id: :biblio_language_published %>
+  </div>
+
+  <div class="field">
+    <%= form.label :language_researched %>
+    <%= form.text_field :language_researched, id: :biblio_language_researched %>
+  </div>
+
+  <div class="field">
+    <%= form.label :country_of_research %>
+    <%= form.text_field :country_of_research, id: :biblio_country_of_research %>
+  </div>
+
+  <div class="field">
+    <%= form.label :keywords %>
+    <%= form.text_field :keywords, id: :biblio_keywords %>
+  </div>
+
+  <div class="field">
+    <%= form.label :isbn %>
+    <%= form.text_field :isbn, id: :biblio_isbn %>
+  </div>
+
+  <div class="field">
+    <%= form.label :issn %>
+    <%= form.text_field :issn, id: :biblio_issn %>
+  </div>
+
+  <div class="field">
+    <%= form.label :url %>
+    <%= form.text_field :url, id: :biblio_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date_of_entry %>
+    <%= form.text_field :date_of_entry, id: :biblio_date_of_entry %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,11 +1,11 @@
 <footer class="footer">
-  <small>
-    The Bibliography Database Research by Jiatao Wu
-  </small>
-  <nav>
-    <ul>
-      <li><%= link_to "About",   about_path %></li>
-      <li><%= link_to "Contact", contact_path %></li>
-    </ul>
-  </nav>
+  <form class="form-inline">
+    <small>
+      <ul class="list-inline">
+        <li class="list-inline-item">The Bibliography Database Research by Jiatao Wu.</li>
+        <li class="list-inline-item"><%= link_to "About",   about_path, class: " text-secondary" %></li>
+        <li class="list-inline-item"><%= link_to "Contact", contact_path, class: "text-secondary" %></li>
+      </ul>
+    </small>
+  </form>
 </footer>

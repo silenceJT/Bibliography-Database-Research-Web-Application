@@ -1,11 +1,11 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
+<header class="navbar navbar-dark bg-dark justify-content-between">
     <div class="container">
-        <%= link_to "Bibliography", root_path, id: "logo" %>
-        <nav>
-          <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "Home",   root_path %></li>
-            <li><%= link_to "Help",   help_path %></li>
-          </ul>
-        </nav>
+        <%= link_to "BIBLIOGRAPHY", biblios_path, class: "navbar-brand" %>
+        <div>
+          <form class="form-inline">
+            <%= link_to "Home",   root_path, class: "navbar-brand" %>
+            <%= link_to "Help",   help_path, class: "navbar-brand" %>
+          </form>
+        </div>
      </div>
 </header>
