@@ -1,5 +1,10 @@
-<h1>New Biblio</h1>
+<h1 class="text-center">New Biblio</h1>
 
 <%= render 'form', biblio: @biblio %>
 
-<%= link_to 'Back', biblios_path %>
+<div class="container">
+  <div class="float-right">
+    <%= link_to 'Back', biblios_path, class: "btn btn-outline-primary btn-sm" %>
+  </div>
+</div>
+

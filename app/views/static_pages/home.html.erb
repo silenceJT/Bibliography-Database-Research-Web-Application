@@ -20,8 +20,13 @@
 
 <%= form_tag("/search", method: "get") do %>
   <div class="input-group">
-    <%= text_field_tag :search, params[:search], class: 'form-control search', 
+    <%= text_field_tag :search, params[:search], class: "form-control search", 
                                                 placeholder: "Search for..." %>
+    <select name="filter_id" id="filter_id">
+      <option value="1">Author</option>
+      <option value="2">Title</option>
+      <option value="3">Publication</option>
+    </select>
     <%= link_to "Search!", '#', class: "btn btn-outline-primary" %>
   </div>
 <% end %>
