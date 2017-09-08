@@ -1,4 +1,6 @@
 class Biblio < ApplicationRecord
+#class Biblio
+  #include Mongoid::Document
   validates :author, presence: true
   validates :year, presence: true
   validates :title, presence: true

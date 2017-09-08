@@ -12,6 +12,7 @@ gem 'bootstrap', '~> 4.0.0.beta'
 gem 'bcrypt', '3.1.11'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
+gem 'mongoid', '~> 6.1.0'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'

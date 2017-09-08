@@ -3,6 +3,7 @@ class BibliosController < ApplicationController
   
   def index
     #@biblios = Biblio.all
+    
     @query = Biblio.search do
       fulltext params[:search]
     end
