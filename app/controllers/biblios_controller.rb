@@ -2,7 +2,11 @@ class BibliosController < ApplicationController
   before_action :set_biblio, only: [:show, :edit, :update, :destroy]
   
   def index
-    @biblios = Biblio.all
+    #@biblios = Biblio.all
+    @query = Biblio.search do
+      fulltext params[:search]
+    end
+    @biblios = @query.results
   end
   
   def show
