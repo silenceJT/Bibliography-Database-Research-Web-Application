@@ -1,0 +1,180 @@
+<%= form_with(model: bib, local: true) do |form| %>
+  <% if bib.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(bib.errors.count, "error") %> prohibited this bib from being saved:</h2>
+
+      <ul>
+      <% bib.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <%= form.label :author, class: "form-control" %>
+      </div>
+      <div class="col">
+        <%= form.text_field :author, id: :bib_author, class:"form-control" %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <%= form.label :year, class: "form-control" %>
+      </div>
+      <div class="col">
+        <%= form.text_field :year, id: :bib_year, class:"form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <%= form.label :title, class: "form-control" %>
+      </div>
+      <div class="col">
+        <%= form.text_field :title, id: :bib_title, class:"form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <%= form.label :publication, class: "form-control" %>
+      </div>
+      <div class="col">
+        <%= form.text_field :publication, id: :bib_publication, class:"form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <%= form.label :publisher, class: "form-control" %>
+      </div>
+      <div class="col">
+        <%= form.text_field :publisher, id: :bib_publisher, class:"form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <%= form.label :biblio_name, class: "form-control" %>
+      </div>
+      <div class="col">
+        <%= form.text_field :biblio_name, id: :bib_biblio_name, class:"form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <%= form.label :language_published, class: "form-control" %>
+      </div>
+      <div class="col">
+        <%= form.text_field :language_published, id: :bib_language_published, class:"form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <%= form.label :language_researched, class: "form-control" %>
+      </div>
+      <div class="col">
+        <%= form.text_field :language_researched, id: :bib_language_researched, class:"form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <%= form.label :country_of_research, class: "form-control" %>
+      </div>
+      <div class="col">
+        <%= form.text_field :country_of_research, id: :bib_country_of_research, class:"form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <%= form.label :keywords, class: "form-control" %>
+      </div>
+      <div class="col">
+        <%= form.text_field :keywords, id: :bib_keywords, class:"form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <%= form.label :isbn, class: "form-control" %>
+      </div>
+      <div class="col">
+        <%= form.text_field :isbn, id: :bib_isbn, class:"form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <%= form.label :issn, class: "form-control" %>
+      </div>
+      <div class="col">
+        <%= form.text_field :issn, id: :bib_issn, class:"form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <%= form.label :url, class: "form-control" %>
+      </div>
+      <div class="col">
+        <%= form.text_field :url, id: :bib_url, class:"form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <%= form.label :date_of_entry, class: "form-control" %>
+      </div>
+      <div class="col">
+        <%= form.text_field :date_of_entry, id: :bib_date_of_entry, class:"form-control" %>
+      </div>
+    </div>
+    <div class="row justify-content-end">
+      <div class="col-9">
+        <small class="form-text text-muted">DD/MM/YYYY</small>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  <div class="container">
+    <div class="actions">
+      <%= form.submit "Save", class: "btn btn-outline-success btn-sm" %>
+    </div>
+  </div>
+<% end %>

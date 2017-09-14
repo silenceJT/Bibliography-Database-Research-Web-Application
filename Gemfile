@@ -9,10 +9,15 @@ gem 'jquery-rails', '4.3.1'
 gem 'turbolinks',   '5.0.1'
 gem 'jbuilder',     '2.7.0'
 gem 'bootstrap', '~> 4.0.0.beta'
-gem 'bcrypt', '3.1.11'
-gem 'sunspot_rails'
-gem 'sunspot_solr'
+gem 'bcrypt', platforms: :ruby
+#gem 'sunspot_rails'
+#gem 'sunspot_solr'
 gem 'mongoid', '~> 6.1.0'
+#gem 'mongoid_search'
+gem 'mongoid_fulltext'
+gem 'wdm', '>= 0.1.0'
+gem 'kaminari'
+gem 'bootstrap4-kaminari-views'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'

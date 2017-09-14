@@ -9,10 +9,10 @@ development:
       # Provides the hosts the default client can connect to. Must be an array
       # of host:port pairs. (required)
       hosts:
-        #- localhost:27017
-        - cluster0-shard-00-00-f0faw.mongodb.net:27017
-        - cluster0-shard-00-01-f0faw.mongodb.net:27017
-        - cluster0-shard-00-02-f0faw.mongodb.net:27017
+        - localhost:27017
+        #- cluster0-shard-00-00-f0faw.mongodb.net:27017
+        #- cluster0-shard-00-01-f0faw.mongodb.net:27017
+        #- cluster0-shard-00-02-f0faw.mongodb.net:27017
       options:
         # Change the default write concern. (default = { w: 1 })
         # write:
@@ -27,10 +27,10 @@ development:
         #     - use: web
 
         # The name of the user for authentication.
-         user: jiataow
+        # user: 'jiataow'
 
         # The password of the user for authentication.
-         password: jesse_0626X
+        # password: 'jesse_0626X'
 
         # The user's database roles.
         # roles:
@@ -44,7 +44,7 @@ development:
 
         # The database or source to authenticate the user against.
         # (default: the database specified above or admin)
-         auth_source: admin
+        # auth_source: admin
 
         # Force a the driver cluster to behave in a certain manner instead of auto-
         # discovering. Can be one of: :direct, :replica_set, :sharded. Set to :direct
@@ -84,7 +84,7 @@ development:
         # replica_set: name
 
         # Whether to connect to the servers via ssl. (default: false)
-         ssl: true
+        # ssl: true
 
         # The certificate file used to identify the connection against MongoDB.
         # ssl_cert: /path/to/my.cert
