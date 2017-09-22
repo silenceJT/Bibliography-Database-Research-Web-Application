@@ -6,16 +6,6 @@
     This is the home page for the Bibliography Database Research
     sample application.
   </h2>
-
 </div>
 
-
-
-<%= form_tag(bibs_path, method: "get") do %>
-  <div class="input-group">
-    <%= text_field_tag :search, params[:search], class: "form-control search", 
-                                                placeholder: "Search for..." %>
-    <%= select_tag "search_form", options_for_select(["Any", "Author", "Title", "Publication"], params[:search_form]) %>
-    <%= submit_tag "Search!", class: "btn btn-outline-primary" %>
-  </div>
-<% end %>
+<%= render 'layouts/search' %>

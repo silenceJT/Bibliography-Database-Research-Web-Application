@@ -1,24 +1,52 @@
-# README
+# The Bibliography Database Research
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+One Paragraph of project description goes here
 
-Things you may want to cover:
 
-* Ruby version
+### Installing
 
-* System dependencies
+1: Download this document
+2: Open terminal and change into the project directory
+3: Type:
+    
+    gem install rails
+ 
+ in the terminal
 
-* Configuration
+### Running test
 
-* Database creation
+1: Open terminal and change into the project directory
 
-* Database initialization
+2: In the terminal, type:
 
-* How to run the test suite
+    rails s
+    
+   to run the server.
+   
 
-* Services (job queues, cache servers, search engines, etc.)
+3: Open browser and go to: 
+    
+    localhost:3000
 
-* Deployment instructions
 
-* ...
+4: If you want to stop server, type Crtl+C in terminal
+
+## Built with
+
+* [Rails on Ruby](http://rubyonrails.org/) - The web application builder
+* [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) - A NoSQL database on cloud
+* [Bootstrap](http://getbootstrap.com/) - A popular front-end component library for web
+
+## Authors
+
+* **Jiatao Wu**
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* Hat tip to anyone who's code was used
+* Inspiration
+* etc

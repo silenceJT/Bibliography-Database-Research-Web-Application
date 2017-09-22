@@ -1,7 +1,8 @@
 class Bib
   include Mongoid::Document
   include Mongoid::FullTextSearch
-  store_in collection: "testCollection", database: "test"
+  #store_in collection: "testCollection", database: "test"
+  store_in collection: "biblio", database: "test"
   field :author, type: String
   field :year, type: String
   field :title, type: String
@@ -16,11 +17,12 @@ class Bib
   field :issn, type: String
   field :url, type: String
   field :date_of_entry, type: String
+  field :source, type: String
 
-  fulltext_search_in :author, :year, :title, :publication,                              :publisher, :biblio_name, :language_published,                      :language_researched, :country_of_research,                        :keywords, :isbn, :issn, :url, :date_of_entry
+  fulltext_search_in :author, :year, :title, :publication,                              :publisher, :biblio_name, :language_published,                      :language_researched, :country_of_research,                        :keywords, :isbn, :issn, :url,                                   :date_of_entry, :source
 
   def any
-      [author, year, title, publication, publisher, biblio_name, language_published, language_researched, country_of_research, keywords, isbn, issn, url, date_of_entry].join(' ')
+      [author, year, title, publication, publisher, biblio_name, language_published, language_researched, country_of_research, keywords, isbn, issn, url, date_of_entry, source].join(' ')
   end
   
   fulltext_search_in :name
@@ -28,18 +30,13 @@ class Bib
   def self.search(search_form, search)
     if search
         if search_form.to_s == "Any".to_s
-            Bib.any_of({author: /#{search}/}, 
-                       {title: /#{search}/}, 
-                       {publication: /#{search}/})
+            Bib.any_of({author: /#{search}/i}, 
+                       {title: /#{search}/i}, 
+                       {publication: /#{search}/i})
         elsif search_form.to_s == "Author".to_s 
-            #all.select {|b| b.author.include?(search)}
-            Bib.where(author: /#{search}/)
+            Bib.any_of({anthor: /#{search}/i})
         elsif search_form.to_s == "Title".to_s
-            #all.select {|b| b.title.include?(search)}
-            Bib.where(title: /#{search}/)
-        elsif search_form.to_s == "Publication".to_s
-            #all.select {|b| b.publication.include?(search)}
-            Bib.where(publication: /#{search}/)
+            Bib.any_of({title: /#{search}/i})
         end
     else
         all

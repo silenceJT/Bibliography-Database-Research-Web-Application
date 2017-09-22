@@ -70,9 +70,16 @@
     <div class="col-3 bg-light"><Strong>Date of entry</Strong></div>
     <div class="col"><%= @bib.date_of_entry %></div>
   </div>
+  
+  <div class="row">
+    <div class="col-3 bg-light"><Strong>Source</Strong></div>
+    <div class="col"><%= @bib.source %></div>
+  </div>
 </div>
+
+<br>
 
 <div class="float-right">
   <%= link_to 'Edit', edit_bib_path(@bib), class: "btn btn-outline-info btn-sm" %>
-  <%= link_to 'Back', bibs_path, class: "btn btn-outline-primary btn-sm" %>
+  <%= link_to 'Back', :back, class: "btn btn-outline-primary btn-sm" %>
 </div>
