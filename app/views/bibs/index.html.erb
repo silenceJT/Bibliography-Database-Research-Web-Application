@@ -1,36 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+
+<body>
+
+   
+<!--<script>
+    function sortTable(f,n){
+        var rows = $('#myTable tbody tr').get();
+        
+        rows.sort(function(a,b){
+            var A = getVal(a);
+            var B =getVal(b);
+            
+            if(A < B){
+                return -1*f;
+            }
+            if(A > B){
+                return 1*f;
+            }
+            return 0;
+        });
+        
+        function getVal(elm){
+            var v = $(elm).children('td').eq(n).text.toUpperCase();
+            if($.isNumeric(v)){
+                v = parseInt(v,10);
+            }
+            return v;
+        }
+        
+        $.each(rows, function(index, row){
+            $('#myTable').children('tbody').append(row);
+        });
+    }
+    
+    var f_author = 1;
+    var f_year = 1;
+    $('#author').click(function(){
+        f_author *= -1;
+        var n = $(this).prevAll().length;
+        sortTable(f_author,n);
+    });
+    $('#year').click(function(){
+        f_author *= -1;
+        var n = $(this).prevAll().length;
+        sortTable(f_year,n);
+    });
+
+</script>-->
+
+<script>
+    function sortTable(n) {
+        var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+        table = document.getElementById("myTable");
+        switching = true;
+        dir = "asc";
+        while(switching){
+            switching = false;
+            rows = table.getElementsByTagName("TR");
+            for(i=1; i<(rows.length - 1);i++){
+                shouldSwitch = false;
+                x = rows[i].getElementsByTagName("TD")[n];
+                y = rows[i+1].getElementsByTagName("TD")[n];
+                if(dir == "asc"){
+                    if(x.innerHTML.toLowerCase() >  y.innerHTML.toLowerCase()){
+                        shouldSwitch = true;
+                        break;
+                    }  
+                }else if (dir == "desc"){
+                    if(x.innerHTML.toLowerCase() <  y.innerHTML.toLowerCase()){
+                        shouldSwitch = true;
+                        break;
+                    }  
+                }
+            }
+            if(shouldSwitch){
+                rows[i].parentNode.insertBefore(rows[i+1], rows[i]);
+                switching = true;
+                switchcount++;
+            }else{
+                if(switchcount == 0 && dir == "asc"){
+                    dir = "desc";
+                    switching = true;
+                }
+            }
+        }
+    }
+</script>
+    
+    
 <p id="notice"><%= notice %></p>
 
-<h1 class="text-center">Biblios</h1>
+<h1 class="text-center">Biblio</h1>
 
-<%= render 'layouts/search' %>
+
+<!--%= render 'layouts/search' %-->
 
 <div class="float-left">
   <%= @count %> 
   <b><%= @entry %></b> Results Found
 </div>
-
-
-<table class="table table-striped table-bordered table-hover">
+   
+    
+    
+<table id="myTable" class="table table-striped table-bordered table-hover" style="width:100%">
   <thead class="thead-inverse">
     <tr>
-      <th>Author</th>
-      <th>Year</th>
-      <th>Title</th>
-      <th>Language</th>
-      <th colspan="2">Functions</th>
+      <th onclick="sortTable(0)" style="cursor:pointer">Author</th>
+      <th onclick="sortTable(1)" style="cursor:pointer">Year</th>
+      <th onclick="sortTable(2)" style="cursor:pointer">Title</th>
+      <th>Lg Res</th>
+      <th>Lg Pub</th>
+      <th>Country</th>
+      <th>Keywords</th>
+      <!--<th colspan="2">Functions</th>-->
     </tr>
   </thead>
 
   <tbody>
     <% @bibs.each do |bib| %>
-      <tr>
-        <td><%= bib.author %></td>
-        <td><%= bib.year %></td>
-        <td><%= bib.title %></td>
-        <td><%= bib.language_published %></td>
-        <td><%= link_to 'Show', bib, class: "btn btn-outline-success btn-sm" %></td>
-        <!--<td><%= link_to 'Edit', edit_bib_path(bib), class: "btn btn-outline-info btn-sm" %></td>-->
-        <td><%= link_to 'Delete', bib, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger btn-sm" %></td>
+      <tr onclick="window.location.href='/bibs/<%= bib.id.to_s %>'" style="cursor:pointer">
+        <td width="15%"><%= bib.author %></td>
+        <td width="5%"><%= bib.year %></td>
+        <td width="35%"><%= bib.title %></td>
+        <td width="10%"><%= bib.language_researched %></td>
+        <td width="10%"><%= bib.language_published %></td>
+        <td width="10%"><%= bib.country_of_research %></td>
+        <td width="15%"><%= bib.keywords %></td>
+        <!--<td width="5%"><%= link_to 'Show', bib, class: "btn btn-outline-success btn-sm" %></td>
+        <td width="5%"><%= link_to 'Delete', bib, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger btn-sm" %></td>-->
       </tr>
     <% end %>
   </tbody>
@@ -42,4 +143,5 @@
     <%= paginate @bibs, theme: "twitter-bootstrap-4" %>
 </div>
 
-
+</body>
+</html>

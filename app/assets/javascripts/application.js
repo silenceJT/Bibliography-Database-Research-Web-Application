@@ -14,8 +14,13 @@
 //= require turbolinks
 
 //= require jquery
+//= require jquery_ujs
+//= require jquery.dataTables.min
+//= require jquery.tablesorter
 //= require popper
 //= require bootstrap
 
 //= require Chart.bundle
 //= require chartkick
+//= require_tree .
+

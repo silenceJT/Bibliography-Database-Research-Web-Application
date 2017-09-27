@@ -47,12 +47,15 @@ class BibsController < ApplicationController
         @entry = @entry.push(params[:date])
     end
     if params[:tag].present?
-        @bibs.select {|b| b.keywords.downcase.include?(params[:tag].downcase)}
+        #@bibs = @bibs.select {|b| b.keywords.present?}
+        @bibs = @bibs.select {|b| b.keywords.downcase.include?(params[:tag].downcase)}
         @entry = @entry.push(params[:tag])
     end
     
     @count = @bibs.count
     @bibs = Kaminari.paginate_array(@bibs).page(params[:page]).per(20)
+      
+    
   end
     
   
@@ -80,9 +83,11 @@ class BibsController < ApplicationController
       if @bib.save
         format.html { redirect_to @bib, notice: 'Bib was successfully created.' }
         format.json { render :show, status: :created, location: @bib }
+        
       else
         format.html { render :new }
         format.json { render json: @bib.errors, status: :unprocessable_entity }
+        
       end
     end
   end
@@ -94,9 +99,11 @@ class BibsController < ApplicationController
       if @bib.update(bib_params)
         format.html { redirect_to @bib, notice: 'Bib was successfully updated.' }
         format.json { render :show, status: :ok, location: @bib }
+        
       else
         format.html { render :edit }
         format.json { render json: @bib.errors, status: :unprocessable_entity }
+        
       end
     end
   end
@@ -108,6 +115,7 @@ class BibsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to bibs_url, notice: 'Bib was successfully destroyed.' }
       format.json { head :no_content }
+      
     end
   end
 

@@ -25,7 +25,7 @@ class Bib
       [author, year, title, publication, publisher, biblio_name, language_published, language_researched, country_of_research, keywords, isbn, issn, url, date_of_entry, source].join(' ')
   end
   
-  fulltext_search_in :name
+  fulltext_search_in :any
     
   def self.search(search_form, search)
     if search
