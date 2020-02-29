@@ -156,7 +156,7 @@ GEM
     pry (0.11.1)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
-    puma (3.9.1)
+    puma (3.12.3)
     rack (2.0.3)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -263,7 +263,7 @@ DEPENDENCIES
   mongoid (~> 6.1.0)
   mongoid_fulltext
   pg (= 0.18.4)
-  puma (= 3.9.1)
+  puma (= 3.12.3)
   rails (= 5.1.2)
   rails-controller-testing (= 1.0.2)
   sass-rails (= 5.0.6)
