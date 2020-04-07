@@ -17,6 +17,7 @@ gem 'bootstrap4-kaminari-views'
 gem 'chartkick'
 gem 'groupdate'
 gem 'order_query', '~> 0.3.4'
+gem 'bundler', '1.17.3'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'
