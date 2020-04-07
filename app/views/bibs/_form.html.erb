@@ -160,12 +160,18 @@
         <%= form.label :date_of_entry, class: "form-control" %>
       </div>
       <div class="col">
-        <%= form.text_field :date_of_entry, id: :bib_date_of_entry, class:"form-control" %>
+        <%= form.text_field :date_of_entry, id: :bib_date_of_entry, class:"form-control", placeholder: "DD/MM/YYYY"%>
       </div>
     </div>
-    <div class="row justify-content-end">
-      <div class="col-9">
-        <small class="form-text text-muted">DD/MM/YYYY</small>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <%= form.label :language_family, class: "form-control" %>
+      </div>
+      <div class="col">
+        <%= form.text_field :language_family, id: :bib_language_family, class:"form-control" %>
       </div>
     </div>
   </div>
@@ -176,10 +182,12 @@
         <%= form.label :Source, class: "form-control" %>
       </div>
       <div class="col-9">
-        <%= form.text_field :source, id: :source, class:"form-control" %>
+        <%= form.text_area :source, id: :source, rows: 10, class:"form-control" %>
       </div>
     </div>
   </div>
+
+  
 
   <div class="container">
     <div class="actions">

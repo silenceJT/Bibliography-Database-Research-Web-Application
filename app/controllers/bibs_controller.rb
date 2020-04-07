@@ -1,5 +1,6 @@
 class BibsController < ApplicationController
   before_action :set_bib, only: [:show, :edit, :update, :destroy]
+
       
   # GET /bibs
   # GET /bibs.json
@@ -51,14 +52,22 @@ class BibsController < ApplicationController
         @bibs = @bibs.select {|b| b.keywords.downcase.include?(params[:tag].downcase)}
         @entry = @entry.push(params[:tag])
     end
-    
-    @count = @bibs.count
-    @bibs = Kaminari.paginate_array(@bibs).page(params[:page]).per(20)
       
+    #@groups = Kaminari.paginate_array(@bibs).page(params[:page]).per(20)
     
+
+    respond_to do |format|
+        format.html do
+          @groups = Kaminari.paginate_array(@bibs).page(params[:page]).per(20)
+        end
+        format.csv { send_data @bibs.to_csv}
+        format.xls #{ send_data @downloads.to_csv(col_sep: "\t")}
+    end
+
+
+
   end
-    
-  
+
 
   # GET /bibs/1
   # GET /bibs/1.json
@@ -81,7 +90,7 @@ class BibsController < ApplicationController
 
     respond_to do |format|
       if @bib.save
-        format.html { redirect_to @bib, notice: 'Bib was successfully created.' }
+        format.html { redirect_to @bib, notice: 'The Biblio was successfully created.' }
         format.json { render :show, status: :created, location: @bib }
         
       else
@@ -97,7 +106,7 @@ class BibsController < ApplicationController
   def update
     respond_to do |format|
       if @bib.update(bib_params)
-        format.html { redirect_to @bib, notice: 'Bib was successfully updated.' }
+        format.html { redirect_to @bib, notice: 'The Biblio was successfully updated.' }
         format.json { render :show, status: :ok, location: @bib }
         
       else
@@ -113,11 +122,13 @@ class BibsController < ApplicationController
   def destroy
     @bib.destroy
     respond_to do |format|
-      format.html { redirect_to bibs_url, notice: 'Bib was successfully destroyed.' }
+      format.html { redirect_to bibs_url, notice: 'The Biblio was successfully deleted.' }
       format.json { head :no_content }
       
     end
   end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

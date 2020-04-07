@@ -1,56 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 </head>
 
 <body>
-
-   
-<!--<script>
-    function sortTable(f,n){
-        var rows = $('#myTable tbody tr').get();
-        
-        rows.sort(function(a,b){
-            var A = getVal(a);
-            var B =getVal(b);
-            
-            if(A < B){
-                return -1*f;
-            }
-            if(A > B){
-                return 1*f;
-            }
-            return 0;
-        });
-        
-        function getVal(elm){
-            var v = $(elm).children('td').eq(n).text.toUpperCase();
-            if($.isNumeric(v)){
-                v = parseInt(v,10);
-            }
-            return v;
-        }
-        
-        $.each(rows, function(index, row){
-            $('#myTable').children('tbody').append(row);
-        });
-    }
     
-    var f_author = 1;
-    var f_year = 1;
-    $('#author').click(function(){
-        f_author *= -1;
-        var n = $(this).prevAll().length;
-        sortTable(f_author,n);
-    });
-    $('#year').click(function(){
-        f_author *= -1;
-        var n = $(this).prevAll().length;
-        sortTable(f_year,n);
-    });
 
-</script>-->
 
 <script>
     function sortTable(n) {
@@ -91,20 +46,35 @@
     }
 </script>
     
+
     
 <p id="notice"><%= notice %></p>
 
 <h1 class="text-center">Biblio</h1>
 
 
-<!--%= render 'layouts/search' %-->
+<%= render 'layouts/search' %>
+
+<hr>
+
+
+
+<!--%= render 'layouts/checkbox' %-->
+
+
 
 <div class="float-left">
-  <%= @count %> 
-  <b><%= @entry %></b> Results Found
+  <% if @groups.length == 0 %>
+    <%= @groups.offset_value %>  -  <%= @groups.offset_value + @groups.length %>  of  <%= @groups.total_count %>
+  <% else %>
+    <%= @groups.offset_value + 1 %>  -  <%= @groups.offset_value + @groups.length %>  of  <%= @groups.total_count %>
+  <% end %>
+  <b><%= @entry %></b>
+  <%= link_to "Download: Excel", 
+    bibs_path(request.params.merge({:format => "xls"})),
+    download: 'bibs.xls', class: "btn btn-outline-info" %>
 </div>
    
-    
     
 <table id="myTable" class="table table-striped table-bordered table-hover" style="width:100%">
   <thead class="thead-inverse">
@@ -112,8 +82,8 @@
       <th onclick="sortTable(0)" style="cursor:pointer">Author</th>
       <th onclick="sortTable(1)" style="cursor:pointer">Year</th>
       <th onclick="sortTable(2)" style="cursor:pointer">Title</th>
-      <th>Lg Res</th>
       <th>Lg Pub</th>
+      <th>Lg Res</th>
       <th>Country</th>
       <th>Keywords</th>
       <!--<th colspan="2">Functions</th>-->
@@ -121,26 +91,22 @@
   </thead>
 
   <tbody>
-    <% @bibs.each do |bib| %>
+    <% @groups.each do |bib| %>
       <tr onclick="window.location.href='/bibs/<%= bib.id.to_s %>'" style="cursor:pointer">
         <td width="15%"><%= bib.author %></td>
         <td width="5%"><%= bib.year %></td>
         <td width="35%"><%= bib.title %></td>
-        <td width="10%"><%= bib.language_researched %></td>
         <td width="10%"><%= bib.language_published %></td>
+        <td width="10%"><%= bib.language_researched %></td>
         <td width="10%"><%= bib.country_of_research %></td>
         <td width="15%"><%= bib.keywords %></td>
-        <!--<td width="5%"><%= link_to 'Show', bib, class: "btn btn-outline-success btn-sm" %></td>
-        <td width="5%"><%= link_to 'Delete', bib, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger btn-sm" %></td>-->
       </tr>
     <% end %>
   </tbody>
 </table>
 
-
-
 <div>
-    <%= paginate @bibs, theme: "twitter-bootstrap-4" %>
+    <%= paginate @groups, theme: "twitter-bootstrap-4" %>
 </div>
 
 </body>

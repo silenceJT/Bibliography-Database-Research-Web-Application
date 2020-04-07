@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Author</Data></Cell>
+        <Cell><Data ss:Type="String">Year</Data></Cell>
+        <Cell><Data ss:Type="String">Title</Data></Cell>
+        <Cell><Data ss:Type="String">Publication</Data></Cell>
+        <Cell><Data ss:Type="String">Publisher</Data></Cell>
+        <Cell><Data ss:Type="String">Biblio Name</Data></Cell>
+        <Cell><Data ss:Type="String">Language Published</Data></Cell>
+        <Cell><Data ss:Type="String">Language Researched</Data></Cell>
+        <Cell><Data ss:Type="String">Country of Research</Data></Cell>
+        <Cell><Data ss:Type="String">Keywords</Data></Cell>
+        <Cell><Data ss:Type="String">ISBN</Data></Cell>
+        <Cell><Data ss:Type="String">ISSN</Data></Cell>
+        <Cell><Data ss:Type="String">URL</Data></Cell>
+        <Cell><Data ss:Type="String">Date of Entry</Data></Cell>
+        <Cell><Data ss:Type="String">Source</Data></Cell>
+      </Row>
+    <% @bibs.each do |bib| %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= bib.author %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= bib.year %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= bib.title %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= bib.publication %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= bib.publisher %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= bib.biblio_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= bib.language_published %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= bib.language_researched %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= bib.country_of_research %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= bib.keywords %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= bib.isbn %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= bib.issn %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= bib.url %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= bib.date_of_entry %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= bib.source %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

@@ -2,7 +2,8 @@ class Bib
   include Mongoid::Document
   include Mongoid::FullTextSearch
   #store_in collection: "testCollection", database: "test"
-  store_in collection: "biblio", database: "test"
+  #store_in collection: "biblio", database: "test"
+  store_in collection: "biblio_190614", database: "test"
   field :author, type: String
   field :year, type: String
   field :title, type: String
@@ -18,15 +19,42 @@ class Bib
   field :url, type: String
   field :date_of_entry, type: String
   field :source, type: String
+  field :language_family, type: String
 
-  fulltext_search_in :author, :year, :title, :publication,                              :publisher, :biblio_name, :language_published,                      :language_researched, :country_of_research,                        :keywords, :isbn, :issn, :url,                                   :date_of_entry, :source
+/
+  Indo_European = "Spanish, English, Swedish, Hindustani, Portuguese, Bengali, Russian, Punjabi, German, French, Persian"
 
-  def any
-      [author, year, title, publication, publisher, biblio_name, language_published, language_researched, country_of_research, keywords, isbn, issn, url, date_of_entry, source].join(' ')
-  end
+  Sino_Tibetan = "Chinese, Mandarin, Karen, Tibetan, Burmese"
+
+  Afroasiatic = "Arabic, Hausa, Oromo, Amharic, Somali, Hebrew, Tigrinya, Kabyle"
+
+  Nilo_Saharan = "Luo, Kanuri, Songhay, Teso, Nubian, Lugbara, Lango, Dinka, Acholi, Nuer, Maasai, Nhambay"
+
+  Niger_Congo = "Kordofanian, Dogon, Mande, Atlantic, Kru, Senufo, Gur, Adamawa, Kwa, Volta, Bantu"
+
+  Austronesian = "Cebuano, Tagalog, Ilocano, Hiligaynon, Bicol, Philippines, Malay, Javanese, Japanese, Ryujyuan"
+
   
-  fulltext_search_in :any
-    
+    Bib.each do |bib|
+      if Indo_European.downcase.include? (bib.language_published.downcase)
+        bib.language_family = "Indo_European"
+      elsif Sino_Tibetan.downcase.include? (bib.language_published.downcase)
+        bib.language_family = "Sino_Tibetan"
+      elsif Afroasiatic.downcase.include? (bib.language_published.downcase)
+        bib.language_family = "Afroasiatic"
+      elsif Nilo_Saharan.downcase.include? (bib.language_published.downcase)
+        bib.language_family = "Nilo_Saharan"
+      elsif Niger_Congo.downcase.include? (bib.language_published.downcase)
+        bib.language_family = "Niger_Congo"
+      elsif Austronesian.downcase.include? (bib.language_published.downcase)
+        bib.language_family = "Austronesian"
+      else
+        bib.language_family = "others"
+      end
+      #bib.save
+    end
+  /
+  
   def self.search(search_form, search)
     if search
         if search_form.to_s == "Any".to_s
@@ -34,14 +62,38 @@ class Bib
                        {title: /#{search}/i}, 
                        {publication: /#{search}/i})
         elsif search_form.to_s == "Author".to_s 
-            Bib.any_of({anthor: /#{search}/i})
+            Bib.any_of({author: /#{search}/i})
         elsif search_form.to_s == "Title".to_s
             Bib.any_of({title: /#{search}/i})
         end
     else
-        all
+      all
     end
   end
     
-      
+  def self.to_csv(options = {})
+      CSV.generate(options) do |csv|
+          csv << column_names
+          .each do |bib|
+              csv << bib.attributes.values_at(*column_names)
+          end
+      end
+  end
+
+  def next
+    self.class.where(:_id.gt => self._id).order_by([[:_id, :asc]]).limit(1).first
+  end
+
+  def previous
+    self.class.where(:_id.lt => self._id).order_by([[:_id, :desc]]).limit(1).first
+  end
+  
+  # def next
+  #   self.class.where("id > ?", id).first
+  # end
+
+  # def previous
+  #   self.class.where("id < ?", id).last
+  # end
+
 end

@@ -1,6 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<div class="container">
+
+
+<!--div class="container">
   <div class="row">
     <div class="col-3 bg-light"><Strong>Author</Strong></div>
     <div class="col"><%= @bib.author %></div>
@@ -72,15 +74,95 @@
   </div>
   
   <div class="row">
+    <div class="col-3 bg-light"><Strong>Language Family</Strong></div>
+    <div class="col"><%= @bib.language_family %></div>
+  </div>
+
+  <div class="row">
     <div class="col-3 bg-light"><Strong>Source</Strong></div>
     <div class="col"><%= @bib.source %></div>
   </div>
-</div>
+</div-->
+
+
+<table class="table table-striped table-bordered table-hover">
+  <tbody>
+    <tr>
+      <th scope="row" width="20%">Author</th>
+      <td><%= @bib.author %></td>
+    </tr>
+    <tr>
+      <th scope="row">Year</th>
+      <td><%= @bib.year %></td>
+    </tr>
+    <tr>
+      <th scope="row">Title</th>
+      <td><%= @bib.title %></td>
+    </tr>
+    <tr>
+      <th scope="row">Publication</th>
+      <td><%= @bib.publication %></td>
+    </tr>
+    <tr>
+      <th scope="row">Publisher</th>
+      <td><%= @bib.publisher %></td>
+    </tr>
+    <tr>
+      <th scope="row">Biblio Name</th>
+      <td><%= @bib.biblio_name %></td>
+    </tr>
+    <tr>
+      <th scope="row">Language Published</th>
+      <td><%= @bib.language_published %></td>
+    </tr>
+    <tr>
+      <th scope="row">Language Researched</th>
+      <td><%= @bib.language_researched %></td>
+    </tr>
+    <tr>
+      <th scope="row">Country of Research</th>
+      <td><%= @bib.country_of_research %></td>
+    </tr>
+    <tr>
+      <th scope="row">Keywords</th>
+      <td><%= @bib.keywords %></td>
+    </tr>
+    <tr>
+      <th scope="row">ISBN</th>
+      <td><%= @bib.isbn %></td>
+    </tr>
+    <tr>
+      <th scope="row">ISSN</th>
+      <td><%= @bib.issn %></td>
+    </tr>
+    <tr>
+      <th scope="row">URL</th>
+      <td><%= @bib.url %></td>
+    </tr>
+    <tr>
+      <th scope="row">Date of Entry</th>
+      <td><%= @bib.date_of_entry %></td>
+    </tr>
+    <tr>
+      <th scope="row">Language Family</th>
+      <td><%= @bib.language_family %></td>
+    </tr>
+    <tr>
+      <th scope="row">Source</th>
+      <td><%= @bib.source %></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
-<div class="float-right">
+<div class="float-left">
   <%= link_to 'Delete', @bib, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger btn-sm" %>
   <%= link_to 'Edit', edit_bib_path(@bib), class: "btn btn-outline-info btn-sm" %>
   <%= link_to 'Back', :back, class: "btn btn-outline-primary btn-sm" %>
+</div>
+
+<div class="float-right">
+  <%= link_to '< Previous', @bib.previous, class: "btn btn-outline-primary btn-sm" %>
+  <%= link_to 'Next >', @bib.next, class: "btn btn-outline-primary btn-sm" %>
 </div>
