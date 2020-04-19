@@ -3,7 +3,7 @@ class Bib
   include Mongoid::FullTextSearch
   #store_in collection: "testCollection", database: "test"
   #store_in collection: "biblio", database: "test"
-  store_in collection: "biblio_190614", database: "test"
+  store_in collection: "biblio_200419", database: "test"
   field :author, type: String
   field :year, type: String
   field :title, type: String
@@ -21,7 +21,7 @@ class Bib
   field :source, type: String
   field :language_family, type: String
 
-/
+
   Indo_European = "Spanish, English, Swedish, Hindustani, Portuguese, Bengali, Russian, Punjabi, German, French, Persian"
 
   Sino_Tibetan = "Chinese, Mandarin, Karen, Tibetan, Burmese"
@@ -35,25 +35,25 @@ class Bib
   Austronesian = "Cebuano, Tagalog, Ilocano, Hiligaynon, Bicol, Philippines, Malay, Javanese, Japanese, Ryujyuan"
 
   
-    Bib.each do |bib|
-      if Indo_European.downcase.include? (bib.language_published.downcase)
-        bib.language_family = "Indo_European"
-      elsif Sino_Tibetan.downcase.include? (bib.language_published.downcase)
-        bib.language_family = "Sino_Tibetan"
-      elsif Afroasiatic.downcase.include? (bib.language_published.downcase)
-        bib.language_family = "Afroasiatic"
-      elsif Nilo_Saharan.downcase.include? (bib.language_published.downcase)
-        bib.language_family = "Nilo_Saharan"
-      elsif Niger_Congo.downcase.include? (bib.language_published.downcase)
-        bib.language_family = "Niger_Congo"
-      elsif Austronesian.downcase.include? (bib.language_published.downcase)
-        bib.language_family = "Austronesian"
-      else
-        bib.language_family = "others"
-      end
-      #bib.save
-    end
-  /
+    # Bib.each do |bib|
+    #   if Indo_European.downcase.include? (bib.language_published.downcase)
+    #     bib.language_family = "Indo_European"
+    #   elsif Sino_Tibetan.downcase.include? (bib.language_published.downcase)
+    #     bib.language_family = "Sino_Tibetan"
+    #   elsif Afroasiatic.downcase.include? (bib.language_published.downcase)
+    #     bib.language_family = "Afroasiatic"
+    #   elsif Nilo_Saharan.downcase.include? (bib.language_published.downcase)
+    #     bib.language_family = "Nilo_Saharan"
+    #   elsif Niger_Congo.downcase.include? (bib.language_published.downcase)
+    #     bib.language_family = "Niger_Congo"
+    #   elsif Austronesian.downcase.include? (bib.language_published.downcase)
+    #     bib.language_family = "Austronesian"
+    #   else
+    #     bib.language_family = "others"
+    #   end
+    #   #bib.save
+    # end
+  
   
   # search_form is filter which contains Any/Author/Title
   def self.search(search_form, search)
