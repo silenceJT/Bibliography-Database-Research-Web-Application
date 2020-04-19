@@ -55,6 +55,7 @@ class Bib
     end
   /
   
+  # search_form is filter which contains Any/Author/Title
   def self.search(search_form, search)
     if search
         if search_form.to_s == "Any".to_s

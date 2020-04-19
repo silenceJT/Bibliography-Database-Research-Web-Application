@@ -7,6 +7,7 @@ class BibsController < ApplicationController
   def index
     @bibs = Bib.search(params[:search_form], params[:search])
     @entry = Array.new  
+    # Main search for bar
     if params[:search].present?
         @entry = @entry.push(params[:search])
     end
