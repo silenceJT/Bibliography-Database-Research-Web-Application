@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '3.1.0'
+# ruby '~> 3.1.0'
 
 gem 'rails',        '5.1.2'
 gem 'puma',         '3.9.1'
@@ -10,7 +10,7 @@ gem 'coffee-rails', '4.2.2'
 gem 'jquery-rails', '4.3.1'
 gem 'turbolinks',   '5.0.1'
 gem 'jbuilder',     '2.7.0'
-gem 'bootstrap', '~> 4.0.0.beta'
+gem 'bootstrap', '~> 5.2.3'
 gem 'bcrypt', platforms: :ruby
 gem 'mongoid', '~> 6.1.0'
 gem 'mongoid_fulltext'
@@ -28,7 +28,7 @@ end
 
 group :development do
   gem 'web-console',           '3.5.1'
-  gem 'listen',                '3.1.5'
+  gem 'listen', '~> 3.7', '>= 3.7.1'
   gem 'spring',                '2.0.2'
   gem 'spring-watcher-listen', '2.0.1'
 end
