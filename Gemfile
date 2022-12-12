@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-# ruby '~> 3.1.0'
+ruby '~> 2.5.9'
 
 gem 'rails',        '5.1.2'
 gem 'puma',         '3.9.1'
